@@ -4,9 +4,39 @@ import { FormEvent, useState } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
 
+const taskOptions = [
+  "Лендинг",
+  "Сайт-визитка",
+  "Каталог товаров",
+  "Telegram Lead Bot",
+  "Бот записи",
+  "FAQ Bot",
+  "AI FAQ Bot",
+  "AI Chat Assistant",
+  "AI Knowledge Base",
+  "CRM Lite",
+  "Sales Dashboard",
+  "Панель администратора",
+  "Автоматизация заявок",
+  "Email Automation",
+  "Автоматизация документов",
+  "Онлайн-запись",
+  "Price Parser",
+  "Парсер товаров",
+  "Data Dashboard",
+  "Интеграция OpenAI",
+  "Другое"
+];
+
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
+  const [taskQuery, setTaskQuery] = useState("");
+  const [isTaskListOpen, setIsTaskListOpen] = useState(false);
+
+  const filteredTaskOptions = taskOptions.filter((option) =>
+    option.toLowerCase().includes(taskQuery.trim().toLowerCase())
+  );
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -26,6 +56,8 @@ export function ContactForm() {
       const result = (await response.json().catch(() => null)) as { error?: string } | null;
       if (!response.ok) throw new Error(result?.error || "Request failed");
       form.reset();
+      setTaskQuery("");
+      setIsTaskListOpen(false);
       setStatus("success");
       setMessage("Заявка отправлена. Мы свяжемся с вами по указанному контакту.");
     } catch (error) {
@@ -56,18 +88,39 @@ export function ContactForm() {
       </label>
       <label>
         Тип задачи
-        <select name="taskType" required defaultValue="">
-          <option value="" disabled>
-            Выберите направление
-          </option>
-          <option>Автоматизация заявок</option>
-          <option>Сайт или лендинг</option>
-          <option>Telegram-бот</option>
-          <option>Интеграция с CRM / таблицами</option>
-          <option>Внутренний инструмент</option>
-          <option>Созвон / диагностика</option>
-          <option>Другое</option>
-        </select>
+        <div className="task-search">
+          <input
+            name="taskType"
+            required
+            autoComplete="off"
+            placeholder="Начните писать: сайт, бот, AI..."
+            value={taskQuery}
+            onChange={(event) => {
+              setTaskQuery(event.target.value);
+              setIsTaskListOpen(true);
+            }}
+            onFocus={() => setIsTaskListOpen(true)}
+            onBlur={() => window.setTimeout(() => setIsTaskListOpen(false), 120)}
+          />
+          {isTaskListOpen ? (
+            <div className="task-search-list">
+              {(filteredTaskOptions.length > 0 ? filteredTaskOptions : ["Другое"]).map((option) => (
+                <button
+                  key={option}
+                  type="button"
+                  className={taskQuery === option ? "is-active" : ""}
+                  onMouseDown={(event) => event.preventDefault()}
+                  onClick={() => {
+                    setTaskQuery(option);
+                    setIsTaskListOpen(false);
+                  }}
+                >
+                  {option}
+                </button>
+              ))}
+            </div>
+          ) : null}
+        </div>
       </label>
       <label>
         Описание задачи
