@@ -7,6 +7,7 @@ import { MobileMenu } from "./MobileMenu";
 
 const nav = [
   { href: "/small-business", label: "Решения" },
+  { href: "/products", label: "Продукты" },
   { href: "/enterprise", label: "Системы" },
   { href: "/cases", label: "Проекты" },
   { href: "/contact", label: "Связаться" }
