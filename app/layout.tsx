@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { ThreeBackground } from "@/components/ThreeBackground";
 
 export const metadata: Metadata = {
   title: "Solvix - цифровые решения для бизнеса",
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html lang="ru">
       <body>
+        <ThreeBackground />
         <Header />
         <main>{children}</main>
         <Footer />

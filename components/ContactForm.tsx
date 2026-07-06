@@ -65,6 +65,7 @@ export function ContactForm() {
           <option>Telegram-бот</option>
           <option>Интеграция с CRM / таблицами</option>
           <option>Внутренний инструмент</option>
+          <option>Созвон / диагностика</option>
           <option>Другое</option>
         </select>
       </label>

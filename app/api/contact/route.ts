@@ -59,7 +59,6 @@ export async function POST(request: Request) {
   }
 
   const text = formatLead(data);
-
   const results = await Promise.allSettled([sendTelegram(text), sendSms(text)]);
   const failed = results.filter((result) => result.status === "rejected");
 

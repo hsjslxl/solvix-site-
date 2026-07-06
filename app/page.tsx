@@ -7,8 +7,8 @@ import {
   TechBlock,
   TrustBlock
 } from "@/components/Blocks";
-import { Reveal } from "@/components/Reveal";
 import { MobileCollapsible } from "@/components/MobileCollapsible";
+import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { enterpriseServices, smallBusinessServices } from "@/lib/data";
 import Link from "next/link";

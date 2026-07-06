@@ -187,7 +187,7 @@ export function ContactSection() {
     <section className="section contact-section">
       <div className="shell contact-grid">
         <Reveal>
-        <SectionHeading
+          <SectionHeading
             eyebrow="Связаться"
             title="Опишите задачу, и мы предложим первый технический шаг"
             text="Можно начать с диагностики сайта, формы, бота, таблицы, CRM или внутреннего процесса."
