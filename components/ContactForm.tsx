@@ -65,7 +65,7 @@ export function ContactForm() {
       setMessage(
         error instanceof Error && error.message !== "Request failed"
           ? error.message
-          : "Не удалось отправить заявку. Напишите в Telegram или позвоните напрямую."
+          : "Не удалось отправить заявку. Попробуйте отправить форму еще раз чуть позже."
       );
     }
   }

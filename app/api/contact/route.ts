@@ -33,11 +33,12 @@ async function sendTelegram(text: string) {
 
 async function sendSms(text: string) {
   const apiId = process.env.SMS_RU_API_ID;
-  if (!apiId) return;
+  const recipient = process.env.LEAD_SMS_TO;
+  if (!apiId || !recipient) return;
 
   const params = new URLSearchParams({
     api_id: apiId,
-    to: "79998294628",
+    to: recipient,
     msg: text.slice(0, 300),
     json: "1"
   });
@@ -66,7 +67,7 @@ export async function POST(request: Request) {
 
   return NextResponse.json({
     ok: true,
-    email: process.env.LEAD_RECIPIENT_EMAIL || "solvix.team@gmail.com",
+    email: process.env.LEAD_RECIPIENT_EMAIL || undefined,
     warning: failed.length ? "Часть уведомлений не отправилась" : undefined
   });
 }

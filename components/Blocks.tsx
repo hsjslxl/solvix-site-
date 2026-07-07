@@ -192,13 +192,6 @@ export function ContactSection() {
             title="Опишите задачу, и мы предложим первый технический шаг"
             text="Можно начать с диагностики сайта, формы, бота, таблицы, CRM или внутреннего процесса."
           />
-          <div className="contact-lines">
-            <a href="tel:+79998294628">+7 (999) 829-46-28</a>
-            <a href="mailto:solvix.team@gmail.com">solvix.team@gmail.com</a>
-            <a href="https://t.me/solvix" target="_blank" rel="noreferrer">
-              Telegram
-            </a>
-          </div>
         </Reveal>
         <Reveal>
           <ContactForm />

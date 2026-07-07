@@ -264,7 +264,7 @@ export default function ProductsPage() {
               тарифами до $500. Выберите продукт, а детали адаптируем под ваш бизнес.
             </p>
           </div>
-          <a className="products-hero-action" href="#products-contact">
+          <a className="products-hero-action" href="/contact">
             Связаться
           </a>
         </div>
@@ -302,31 +302,11 @@ export default function ProductsPage() {
                   ))}
                 </div>
 
-                <a className="product-contact-button" href="#products-contact">
+                <a className="product-contact-button" href="/contact">
                   Связаться
                 </a>
               </article>
             ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="products-contact" id="products-contact">
-        <div className="shell products-contact-inner">
-          <div>
-            <p className="eyebrow">Контакт</p>
-            <h2>Подберем тариф и соберем первый шаг запуска</h2>
-            <p>
-              Напишите, какой продукт нужен и какие сервисы уже используете. Ответим
-              с понятным вариантом старта.
-            </p>
-          </div>
-          <div className="products-contact-actions">
-            <a href="https://t.me/solvix" target="_blank" rel="noreferrer">
-              Telegram
-            </a>
-            <a href="mailto:solvix.team@gmail.com">solvix.team@gmail.com</a>
-            <a href="tel:+79998294628">+7 (999) 829-46-28</a>
           </div>
         </div>
       </section>
