@@ -16,19 +16,6 @@ function formatLead(data) {
   ].join("\n");
 }
 
-async function sendSms(env, text) {
-  if (!env.SMS_RU_API_ID || !env.LEAD_SMS_TO) return;
-
-  const params = new URLSearchParams({
-    api_id: env.SMS_RU_API_ID,
-    to: env.LEAD_SMS_TO,
-    msg: text.slice(0, 300),
-    json: "1"
-  });
-
-  await fetch(`https://sms.ru/sms/send?${params.toString()}`);
-}
-
 async function sendTelegram(env, text) {
   if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) return;
 
@@ -53,7 +40,7 @@ export async function onRequestPost({ request, env }) {
   }
 
   const text = formatLead(data);
-  const results = await Promise.allSettled([sendSms(env, text), sendTelegram(env, text)]);
+  const results = await Promise.allSettled([sendTelegram(env, text)]);
   const failed = results.some((result) => result.status === "rejected");
 
   return json({
