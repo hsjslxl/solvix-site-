@@ -1,5 +1,4 @@
 import { ProcessBlock, ServiceGrid } from "@/components/Blocks";
-import { Reveal } from "@/components/Reveal";
 import { SectionHeading } from "@/components/SectionHeading";
 import { smallBusinessServices } from "@/lib/data";
 
@@ -28,27 +27,6 @@ export default function SmallBusinessPage() {
             text="Если процесс можно сделать проще через форму, бота, таблицу, скрипт или сайт, мы проектируем понятное решение и запускаем его."
           />
           <ServiceGrid items={smallBusinessServices} />
-        </div>
-      </section>
-      <section className="section muted-section">
-        <div className="shell">
-          <SectionHeading
-            eyebrow="Пакеты"
-            title="Можно стартовать с маленькой задачи и расширять систему постепенно"
-          />
-          <div className="pricing-grid">
-            {[
-              ["Фикс", "от $150", "Починка формы, кнопки, уведомления, таблицы или небольшой ошибки."],
-              ["Автоматизация", "от $300", "Заявка, Telegram, Google Sheets, автоответ, UTM и простой отчет."],
-              ["Запуск", "от $700", "Лендинг, бот, калькулятор или мини-CRM с передачей инструкции."]
-            ].map(([name, price, text]) => (
-              <Reveal className="price-card" key={name}>
-                <h3>{name}</h3>
-                <strong>{price}</strong>
-                <p>{text}</p>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
       <ProcessBlock />

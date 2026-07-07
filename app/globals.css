@@ -189,11 +189,11 @@ main {
 
 .logo-x-letter {
   margin-left: 0.02em;
-  background: linear-gradient(135deg, #0e5f64 0%, #18a6a0 48%, #d0a246 72%, #7c5a1e 100%);
+  background: linear-gradient(180deg, #ffe29a 0%, #d2a143 48%, #7c581d 100%);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
-  text-shadow: 0 1px 0 rgba(255,255,255,0.42), 0 0 20px rgba(24,166,160,0.28);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.42), 0 0 20px rgba(200,164,95,0.32);
 }
 
 .main-nav {
