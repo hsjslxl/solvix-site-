@@ -946,7 +946,7 @@ option {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 1.5fr 0.7fr;
+  grid-template-columns: 1.4fr 0.55fr 0.8fr;
   gap: 52px;
 }
 
@@ -969,6 +969,56 @@ option {
   display: block;
   margin-bottom: 10px;
   color: var(--muted);
+}
+
+.legal-section {
+  background:
+    radial-gradient(circle at 16% 0%, rgba(255,255,255,0.9), transparent 24rem),
+    linear-gradient(180deg, rgba(255,255,255,0.62), rgba(239,242,245,0.42));
+}
+
+.legal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.legal-card {
+  min-height: 210px;
+  padding: 26px;
+  border: 1px solid rgba(120, 130, 145, 0.22);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.92), rgba(247,248,250,0.78)),
+    var(--panel);
+  box-shadow: 0 18px 52px rgba(80, 90, 105, 0.08);
+}
+
+.legal-card h2 {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: #38404a;
+  font-size: 24px;
+  line-height: 1.16;
+  font-weight: 820;
+  animation: none;
+}
+
+.legal-card h2::before,
+.legal-card h2::after {
+  content: none;
+}
+
+.legal-card p {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.62;
 }
 
 .reveal {
@@ -1084,6 +1134,7 @@ option {
   .hero-grid,
   .split,
   .contact-grid,
+  .legal-grid,
   .footer-grid {
     grid-template-columns: 1fr;
   }
@@ -1147,6 +1198,15 @@ option {
 
   .contact-form {
     padding: 18px;
+  }
+
+  .legal-card {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .legal-card h2 {
+    font-size: 21px;
   }
 
   .service-grid,

@@ -15,9 +15,15 @@ export function Footer() {
         <div>
           <h3>Разделы</h3>
           <Link href="/small-business">Решения</Link>
+          <Link href="/products">Продукты</Link>
           <Link href="/enterprise">Системы</Link>
           <Link href="/cases">Проекты</Link>
           <Link href="/contact">Связаться</Link>
+        </div>
+        <div>
+          <h3>Документы</h3>
+          <Link href="/privacy">Политика конфиденциальности</Link>
+          <Link href="/payment">Оплата и порядок работы</Link>
         </div>
       </div>
     </footer>
