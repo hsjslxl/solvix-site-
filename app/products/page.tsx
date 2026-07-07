@@ -287,27 +287,19 @@ export default function ProductsPage() {
                 </div>
 
                 <div className="product-plans">
-                  {product.plans.map((plan) => {
-                    const isPopular = plan.name === "Standard";
-
-                    return (
-                      <section
-                        className={`product-plan${isPopular ? " is-popular" : ""}`}
-                        key={plan.name}
-                      >
-                        {isPopular ? <span className="popular-badge">Самый популярный</span> : null}
-                        <div className="product-plan-top">
-                          <h3>{plan.name}</h3>
-                          <strong>{plan.price}</strong>
-                        </div>
-                        <ul>
-                          {plan.features.map((feature) => (
-                            <li key={feature}>{feature}</li>
-                          ))}
-                        </ul>
-                      </section>
-                    );
-                  })}
+                  {product.plans.map((plan) => (
+                    <section className="product-plan" key={plan.name}>
+                      <div className="product-plan-top">
+                        <h3>{plan.name}</h3>
+                        <strong>{plan.price}</strong>
+                      </div>
+                      <ul>
+                        {plan.features.map((feature) => (
+                          <li key={feature}>{feature}</li>
+                        ))}
+                      </ul>
+                    </section>
+                  ))}
                 </div>
 
                 <a className="product-contact-button" href="#products-contact">
