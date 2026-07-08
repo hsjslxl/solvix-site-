@@ -1406,6 +1406,10 @@ option {
 
 .product-chip-list button,
 .plan-picker button {
+  font-family: "Inter", "Segoe UI Variable", "Segoe UI", "Avenir Next", Arial, sans-serif;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: 0;
   border: 1px solid rgba(120, 130, 145, 0.28);
   background: rgba(255,255,255,0.78);
   color: #56606d;
@@ -1418,7 +1422,7 @@ option {
   padding: 0 15px;
   border-radius: 999px;
   font-size: 14px;
-  font-weight: 760;
+  font-weight: 650;
 }
 
 .product-chip-list button:hover,
@@ -1451,7 +1455,7 @@ option {
   min-height: 54px;
   border-radius: 16px;
   font-size: 16px;
-  font-weight: 820;
+  font-weight: 700;
 }
 
 .product-estimate {
