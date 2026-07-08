@@ -1,3 +1,5 @@
+import { ProductConfigurator } from "@/components/ProductConfigurator";
+
 type PlanName = "Start" | "Standard" | "Pro";
 
 type ProductPlan = {
@@ -270,46 +272,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      <section className="products-catalog">
-        <div className="shell">
-          <div className="products-grid">
-            {products.map((product) => (
-              <article className="product-card" key={product.name}>
-                <div className="product-card-head">
-                  <div>
-                    <h2>{product.name}</h2>
-                    <p>{product.description}</p>
-                  </div>
-                  <div className="product-time">
-                    <span>Срок</span>
-                    <strong>{product.timeline}</strong>
-                  </div>
-                </div>
-
-                <div className="product-plans">
-                  {product.plans.map((plan) => (
-                    <section className="product-plan" key={plan.name}>
-                      <div className="product-plan-top">
-                        <h3>{plan.name}</h3>
-                        <strong>{plan.price}</strong>
-                      </div>
-                      <ul>
-                        {plan.features.map((feature) => (
-                          <li key={feature}>{feature}</li>
-                        ))}
-                      </ul>
-                    </section>
-                  ))}
-                </div>
-
-                <a className="product-contact-button" href="/contact">
-                  Связаться
-                </a>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProductConfigurator products={products} />
     </div>
   );
 }

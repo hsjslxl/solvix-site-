@@ -1342,6 +1342,230 @@ option {
   padding: 42px 0 94px;
 }
 
+.product-configurator {
+  display: grid;
+  gap: 22px;
+  padding: 28px;
+  border: 1px solid rgba(120, 130, 145, 0.24);
+  border-radius: 28px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.94), rgba(245,247,249,0.86)),
+    var(--panel);
+  box-shadow:
+    0 28px 86px rgba(80, 90, 105, 0.12),
+    inset 0 1px 0 rgba(255,255,255,0.92);
+}
+
+.product-picker {
+  display: grid;
+  gap: 20px;
+}
+
+.product-picker-head {
+  max-width: 760px;
+}
+
+.product-picker-head h2 {
+  max-width: 760px;
+  margin: 12px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: #303842;
+  font-family: "Inter", "Segoe UI Variable", "Segoe UI", "Avenir Next", Arial, sans-serif;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.02;
+  font-weight: 780;
+  letter-spacing: 0;
+  animation: none;
+}
+
+.product-picker-head h2::before,
+.product-picker-head h2::after {
+  content: none;
+}
+
+.product-picker-head p:last-child {
+  max-width: 680px;
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.product-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-height: 280px;
+  overflow: auto;
+  padding: 4px 2px 10px;
+}
+
+.product-chip-list button,
+.plan-picker button {
+  border: 1px solid rgba(120, 130, 145, 0.28);
+  background: rgba(255,255,255,0.78);
+  color: #56606d;
+  cursor: pointer;
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, color 220ms ease;
+}
+
+.product-chip-list button {
+  min-height: 42px;
+  padding: 0 15px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 760;
+}
+
+.product-chip-list button:hover,
+.plan-picker button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(182,154,88,0.44);
+  background: rgba(255,255,255,0.96);
+  box-shadow: 0 12px 32px rgba(80, 90, 105, 0.12);
+}
+
+.product-chip-list button.is-active,
+.plan-picker button.is-active {
+  border-color: rgba(182,154,88,0.58);
+  background: linear-gradient(145deg, #ffffff, rgba(244,235,210,0.78));
+  color: #342b18;
+  box-shadow: 0 0 0 4px rgba(182,154,88,0.12);
+}
+
+.plan-picker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 8px;
+  border: 1px solid rgba(120, 130, 145, 0.18);
+  border-radius: 22px;
+  background: rgba(238,241,244,0.62);
+}
+
+.plan-picker button {
+  min-height: 54px;
+  border-radius: 16px;
+  font-size: 16px;
+  font-weight: 820;
+}
+
+.product-estimate {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.45fr);
+  gap: 18px;
+  align-items: stretch;
+  padding-top: 2px;
+}
+
+.product-estimate > div:first-child,
+.estimate-panel,
+.estimate-details,
+.estimate-note {
+  border: 1px solid rgba(120, 130, 145, 0.18);
+  border-radius: 22px;
+  background: rgba(255,255,255,0.74);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.86);
+}
+
+.product-estimate > div:first-child {
+  padding: 22px;
+}
+
+.product-estimate span,
+.estimate-panel span {
+  color: var(--silver-text);
+  font-size: 12px;
+  font-weight: 840;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.product-estimate h3 {
+  margin-top: 10px;
+  color: #2f3741;
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.02;
+  font-weight: 820;
+}
+
+.product-estimate p {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.estimate-panel {
+  display: grid;
+  align-content: center;
+  gap: 10px;
+  padding: 22px;
+}
+
+.estimate-panel strong {
+  color: var(--gold);
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 0.95;
+  font-weight: 860;
+}
+
+.estimate-panel p {
+  margin: 0;
+}
+
+.estimate-details {
+  padding: 22px;
+}
+
+.estimate-details h4 {
+  margin: 0;
+  color: #38404a;
+  font-size: 18px;
+}
+
+.estimate-details ul {
+  display: grid;
+  gap: 9px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.estimate-details li {
+  position: relative;
+  padding-left: 16px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.42;
+}
+
+.estimate-details li::before {
+  content: "";
+  position: absolute;
+  top: 0.58em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--gold);
+}
+
+.estimate-note {
+  grid-column: span 2;
+  margin: 0;
+  padding: 18px 20px;
+}
+
+.product-configurator .product-contact-button {
+  grid-column: span 2;
+  min-height: 56px;
+}
+
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1558,6 +1782,32 @@ option {
 
   .products-grid {
     grid-template-columns: 1fr;
+  }
+
+  .product-configurator {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .product-chip-list {
+    flex-wrap: nowrap;
+    max-height: none;
+    overflow-x: auto;
+    padding-bottom: 12px;
+  }
+
+  .product-chip-list button {
+    flex: 0 0 auto;
+  }
+
+  .plan-picker,
+  .product-estimate {
+    grid-template-columns: 1fr;
+  }
+
+  .estimate-note,
+  .product-configurator .product-contact-button {
+    grid-column: auto;
   }
 
   .products-contact-inner {
