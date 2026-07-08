@@ -1,12 +1,17 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export function Logo() {
   return (
     <Link className="logo" href="/" aria-label="Solvix">
-      <span className="logo-wordmark" aria-hidden="true">
-        <span className="logo-word-main">Solvi</span>
-        <span className="logo-x-letter">x</span>
-      </span>
+      <Image
+        src="/solvix-logo-new.png"
+        alt=""
+        width={764}
+        height={188}
+        aria-hidden="true"
+        priority
+      />
     </Link>
   );
 }
