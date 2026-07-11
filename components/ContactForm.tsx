@@ -21,6 +21,8 @@ const contactFields: Record<
   phone: { label: "Ваш номер телефона", placeholder: "+7 ...", type: "tel" }
 };
 
+const submissionsEnabled = false;
+
 const taskOptions = [
   "Лендинг",
   "Сайт-визитка",
@@ -186,8 +188,17 @@ export function ContactForm() {
         </label>
       </div>
       <input type="hidden" name="startedAt" value={startedAt} />
-      <button className="primary-button" disabled={status === "loading"}>
-        {status === "loading" ? "Отправляем..." : "Отправить заявку"}
+      {!submissionsEnabled ? (
+        <p className="form-message">
+          Приём заявок временно приостановлен: мы подключаем новый защищённый канал связи.
+        </p>
+      ) : null}
+      <button className="primary-button" disabled={status === "loading" || !submissionsEnabled}>
+        {!submissionsEnabled
+          ? "Приём заявок временно недоступен"
+          : status === "loading"
+            ? "Отправляем..."
+            : "Отправить заявку"}
       </button>
       {message ? <p className={`form-message ${status}`}>{message}</p> : null}
     </form>
