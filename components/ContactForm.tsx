@@ -1,8 +1,25 @@
 "use client";
 
+import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 type Status = "idle" | "loading" | "success" | "error";
+type ContactMethod = "telegram" | "email" | "phone";
+
+const contactMethods: Array<{ value: ContactMethod; label: string }> = [
+  { value: "telegram", label: "Telegram" },
+  { value: "email", label: "Email" },
+  { value: "phone", label: "Телефон" }
+];
+
+const contactFields: Record<
+  ContactMethod,
+  { label: string; placeholder: string; type: "text" | "email" | "tel" }
+> = {
+  telegram: { label: "Ваш Telegram", placeholder: "@username", type: "text" },
+  email: { label: "Ваш email", placeholder: "name@example.com", type: "email" },
+  phone: { label: "Ваш номер телефона", placeholder: "+7 ...", type: "tel" }
+};
 
 const taskOptions = [
   "Лендинг",
@@ -33,6 +50,8 @@ export function ContactForm() {
   const [message, setMessage] = useState("");
   const [taskQuery, setTaskQuery] = useState("");
   const [isTaskListOpen, setIsTaskListOpen] = useState(false);
+  const [contactMethod, setContactMethod] = useState<ContactMethod>("telegram");
+  const [startedAt, setStartedAt] = useState(() => Date.now());
 
   const filteredTaskOptions = taskOptions.filter((option) =>
     option.toLowerCase().includes(taskQuery.trim().toLowerCase())
@@ -58,6 +77,8 @@ export function ContactForm() {
       form.reset();
       setTaskQuery("");
       setIsTaskListOpen(false);
+      setContactMethod("telegram");
+      setStartedAt(Date.now());
       setStatus("success");
       setMessage("Заявка отправлена. Мы свяжемся с вами по указанному контакту.");
     } catch (error) {
@@ -72,19 +93,37 @@ export function ContactForm() {
 
   return (
     <form className="contact-form" onSubmit={onSubmit}>
-      <div className="form-grid">
-        <label>
-          Имя
-          <input name="name" required placeholder="Как к вам обращаться" />
-        </label>
-        <label>
-          Телефон
-          <input name="phone" required placeholder="+7 ..." />
-        </label>
-      </div>
       <label>
-        Telegram или email
-        <input name="contact" required placeholder="@username или email" />
+        Имя
+        <input name="name" required maxLength={80} placeholder="Как к вам обращаться" />
+      </label>
+      <fieldset className="contact-method-fieldset">
+        <legend>Где с вами связаться</legend>
+        <div className="contact-method-picker">
+          {contactMethods.map((method) => (
+            <label key={method.value}>
+              <input
+                type="radio"
+                name="contactMethod"
+                value={method.value}
+                checked={contactMethod === method.value}
+                onChange={() => setContactMethod(method.value)}
+              />
+              <span>{method.label}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+      <label>
+        {contactFields[contactMethod].label}
+        <input
+          name="contact"
+          type={contactFields[contactMethod].type}
+          required
+          maxLength={120}
+          autoComplete={contactMethod === "email" ? "email" : contactMethod === "phone" ? "tel" : "off"}
+          placeholder={contactFields[contactMethod].placeholder}
+        />
       </label>
       <label>
         Тип задачи
@@ -92,6 +131,7 @@ export function ContactForm() {
           <input
             name="taskType"
             required
+            maxLength={100}
             autoComplete="off"
             placeholder="Начните писать: сайт, бот, AI..."
             value={taskQuery}
@@ -127,10 +167,25 @@ export function ContactForm() {
         <textarea
           name="details"
           required
+          maxLength={3000}
           rows={5}
           placeholder="Кратко опишите, что нужно сделать и какие сервисы уже используете"
         />
       </label>
+      <label className="consent-field">
+        <input name="consent" type="checkbox" value="yes" required />
+        <span>
+          Я согласен с обработкой данных согласно{" "}
+          <Link href="/privacy">политике конфиденциальности</Link>
+        </span>
+      </label>
+      <div className="spam-trap" aria-hidden="true">
+        <label>
+          Не заполняйте это поле
+          <input name="website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+      <input type="hidden" name="startedAt" value={startedAt} />
       <button className="primary-button" disabled={status === "loading"}>
         {status === "loading" ? "Отправляем..." : "Отправить заявку"}
       </button>
