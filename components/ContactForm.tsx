@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
+import { enterpriseServices, smallBusinessServices } from "@/lib/data";
 
 type Status = "idle" | "loading" | "success" | "error";
 type ContactMethod = "telegram" | "email" | "phone";
@@ -21,31 +22,9 @@ const contactFields: Record<
   phone: { label: "Ваш номер телефона", placeholder: "+7 ...", type: "tel" }
 };
 
-const submissionsEnabled = false;
+const submissionsEnabled = true;
 
-const taskOptions = [
-  "Лендинг",
-  "Сайт-визитка",
-  "Каталог товаров",
-  "Telegram Lead Bot",
-  "Бот записи",
-  "FAQ Bot",
-  "AI FAQ Bot",
-  "AI Chat Assistant",
-  "AI Knowledge Base",
-  "CRM Lite",
-  "Sales Dashboard",
-  "Панель администратора",
-  "Автоматизация заявок",
-  "Email Automation",
-  "Автоматизация документов",
-  "Онлайн-запись",
-  "Price Parser",
-  "Парсер товаров",
-  "Data Dashboard",
-  "Интеграция OpenAI",
-  "Другое"
-];
+const taskOptions = [...smallBusinessServices, ...enterpriseServices, "Другое"];
 
 export function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");

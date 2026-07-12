@@ -11,11 +11,11 @@ npm run dev
 
 ## Формы
 
-Форма отправляет заявку в `/api/contact`. Telegram и SMS включаются через переменные окружения:
+Форма отправляет заявку в `/api/contact`. В Cloudflare Pages бот работает через Telegram webhook, а лиды сохраняются в D1:
 
 - `TELEGRAM_BOT_TOKEN`
 - `TELEGRAM_CHAT_ID`
-- `SMS_RU_API_ID`
-- `LEAD_RECIPIENT_EMAIL`
+- `TELEGRAM_WEBHOOK_SECRET`
+- D1 binding `DB`
 
-Без ключей API форма вернет успешный ответ и покажет данные в серверном логе. Для реального Gmail-уведомления нужен SMTP/API-провайдер, например Resend, SendGrid, Mailgun или SMTP-доступ.
+Без этих переменных форма безопасно вернёт `503` и не покажет пользователю ложный успех.
